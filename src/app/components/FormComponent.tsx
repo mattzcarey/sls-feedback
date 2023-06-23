@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "@/app/hooks/useForm";
+import Slider from "@mui/material/Slider";
 
 const FormComponent = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const FormComponent = () => {
 
   return (
     <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-      <div className="mb-4">
+      <div className="mb-6">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
           htmlFor="email"
@@ -46,7 +47,7 @@ const FormComponent = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
           htmlFor="like"
@@ -62,7 +63,7 @@ const FormComponent = () => {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
           htmlFor="change"
@@ -86,23 +87,19 @@ const FormComponent = () => {
           Please rate your experience of the event between 1 (lowest) and 10
           (highest).
         </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="rating"
-          type="range"
-          min="0"
-          max="10"
-          name="rating"
-          value={formData.rating}
-          onChange={handleChange}
+        <Slider
+          defaultValue={5}
+          min={1}
+          max={10}
+          aria-label="Default"
+          valueLabelDisplay="auto"
+          onChange={(e, value) =>
+            setFormData({ ...formData, rating: value.toString() })
+          }
         />
-        <div className="flex justify-between">
-          <span>1</span>
-          <span>10</span>
-        </div>
       </div>
 
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-6">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"

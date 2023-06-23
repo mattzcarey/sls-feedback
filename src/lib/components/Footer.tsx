@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="bg-white border-t dark:border-white/10 mt-auto py-10">
+    <footer className="bg-white border-t dark:border-white/10 mt-auto py-2">
       <div className="max-w-screen-xl mx-auto flex justify-center items-center gap-4">
         <Link href="http://github.com/mattzcarey/sls-feedback">
           <Image src="/github.svg" alt="Meetup Logo" width={50} height={50} />
