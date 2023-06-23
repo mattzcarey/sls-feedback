@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "@/app/hooks/useForm";
 
@@ -16,11 +16,13 @@ const FormComponent = () => {
   const { submitForm } = useForm();
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     await submitForm(formData);
     router.push("/success");
   };
